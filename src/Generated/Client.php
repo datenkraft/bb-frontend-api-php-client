@@ -5,6 +5,40 @@ namespace Datenkraft\Backbone\Client\FrontendApi\Generated;
 class Client extends \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\Client\Client
 {
     /**
+     * Query Debt Line Items by projectId and time range
+     *
+     * @param array $queryParameters {
+     *     @var string $filter[projectId] projectId filter
+     *     @var string $filter[dateFrom] Date from filter
+     *     @var string $filter[dateTo] Date to filter
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\DebtLineItemResource[]|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getDebtLineItemCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\GetDebtLineItemCollection($queryParameters), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ProjectResource[]|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProjectCollection(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\GetProjectCollection(), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetAuthRoleCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetAuthRoleCollectionForbiddenException
@@ -68,27 +102,6 @@ class Client extends \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\C
     public function postAuthRoleIdentityCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\PostAuthRoleIdentityCollection($requestBody), $fetch);
-    }
-    /**
-     * Query Debt Line Items by projectId and time range
-     *
-     * @param array $queryParameters {
-     *     @var string $filter[projectId] projectId filter
-     *     @var string $filter[dateFrom] Date from filter
-     *     @var string $filter[dateTo] Date to filter
-     * }
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\DebtLineItemResource[]|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function getDebtLineItemCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\GetDebtLineItemCollection($queryParameters), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
