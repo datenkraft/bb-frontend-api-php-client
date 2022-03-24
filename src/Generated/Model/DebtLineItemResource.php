@@ -53,7 +53,7 @@ class DebtLineItemResource
      */
     protected $usageEnd;
     /**
-     * 
+     * Class DebtLineItemResource
      *
      * @var PriceProperty
      */
@@ -233,7 +233,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * 
+     * Class DebtLineItemResource
      *
      * @return PriceProperty
      */
@@ -242,7 +242,7 @@ class DebtLineItemResource
         return $this->priceTotal;
     }
     /**
-     * 
+     * Class DebtLineItemResource
      *
      * @param PriceProperty $priceTotal
      *
