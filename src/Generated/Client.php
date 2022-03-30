@@ -27,19 +27,6 @@ class Client extends \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\C
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ProjectResource[]|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function getProjectCollection(string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\GetProjectCollection(), $fetch);
-    }
-    /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetAuthRoleCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetAuthRoleCollectionForbiddenException
      * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetAuthRoleCollectionInternalServerErrorException
@@ -125,6 +112,19 @@ class Client extends \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\C
     public function getOpenApiInFormat(string $format, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\GetOpenApiInFormat($format), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetProjectCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ProjectResource[]|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProjectCollection(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint\GetProjectCollection(), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array())
     {
