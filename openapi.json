@@ -2,24 +2,86 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Backbone Frontend API",
-        "description": "Backbone Frontend API",
+        "description": "Frontend API",
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "UNDEFINED",
+            "url": "https://frontend.conqore.niceshops.com/",
             "description": "Production server"
         },
         {
-            "url": "UNDEFINED",
+            "url": "https://frontend-api.staging.backbone.datenkraft.info/",
             "description": "Staging server"
         },
         {
-            "url": "https://localhost:30400",
+            "url": "https://localhost:30340",
             "description": "Development server"
         }
     ],
     "paths": {
+        "/project": {
+            "get": {
+                "tags": [
+                    "project"
+                ],
+                "summary": "Get all accessible Projects",
+                "description": "Get all accessible Projects",
+                "operationId": "getProjectCollection",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getProjectCollectionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/debt-line-item": {
             "get": {
                 "tags": [
@@ -304,16 +366,6 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
                     "409": {
                         "description": "Conflict",
                         "content": {
@@ -494,147 +546,38 @@
                     }
                 }
             }
-        },
-        "/project": {
-            "get": {
-                "tags": [
-                    "project"
-                ],
-                "summary": "Get all accessible Projects",
-                "description": "Get all accessible Projects",
-                "operationId": "getProjectCollection",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/getProjectCollectionResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     },
     "components": {
         "schemas": {
-            "authRoleResource": {
-                "required": [
-                    "roleCode",
-                    "name"
-                ],
+            "errorResponse": {
                 "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name",
-                        "type": "string"
+                    "errors": {
+                        "description": "errors",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/error"
+                        }
                     }
                 },
                 "type": "object"
             },
-            "authRoleCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleResource"
-                }
-            },
-            "authRoleIdentityCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleIdentityResource"
-                }
-            },
-            "authRoleIdentityResource": {
+            "error": {
                 "required": [
-                    "roleCode",
-                    "identityId"
+                    "code",
+                    "message"
                 ],
                 "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
+                    "code": {
+                        "description": "Code",
                         "type": "string"
                     },
-                    "identityId": {
-                        "description": "Identity ID",
+                    "message": {
+                        "description": "Message",
                         "type": "string"
                     }
                 },
                 "type": "object"
-            },
-            "getAuthPermissionCollectionResponse": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authPermissionResource"
-                }
-            },
-            "authPermissionResource": {
-                "required": [
-                    "permissionCode",
-                    "name"
-                ],
-                "properties": {
-                    "permissionCode": {
-                        "description": "Permission Code",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "getProjectCollectionResponse": {
-                "description": "Class ProjectResourceCollection",
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/projectResource"
-                }
             },
             "projectResource": {
                 "required": [
@@ -655,6 +598,13 @@
             },
             "projectCollectionResponse": {
                 "description": "Class ProjectResource",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/projectResource"
+                }
+            },
+            "getProjectCollectionResponse": {
+                "description": "Class ProjectResourceCollection",
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/projectResource"
@@ -743,34 +693,74 @@
                 },
                 "type": "object"
             },
-            "errorResponse": {
+            "authPermissionResource": {
+                "required": [
+                    "permissionCode",
+                    "name"
+                ],
                 "properties": {
-                    "errors": {
-                        "description": "errors",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/error"
-                        }
+                    "permissionCode": {
+                        "description": "Permission Code",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
                     }
                 },
                 "type": "object"
             },
-            "error": {
+            "getAuthPermissionCollectionResponse": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authPermissionResource"
+                }
+            },
+            "authRoleIdentityResource": {
                 "required": [
-                    "code",
-                    "message"
+                    "roleCode",
+                    "identityId"
                 ],
                 "properties": {
-                    "code": {
-                        "description": "Code",
+                    "roleCode": {
+                        "description": "Role Code",
                         "type": "string"
                     },
-                    "message": {
-                        "description": "Message",
+                    "identityId": {
+                        "description": "Identity ID",
                         "type": "string"
                     }
                 },
                 "type": "object"
+            },
+            "authRoleIdentityCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authRoleIdentityResource"
+                }
+            },
+            "authRoleResource": {
+                "required": [
+                    "roleCode",
+                    "name"
+                ],
+                "properties": {
+                    "roleCode": {
+                        "description": "Role Code",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authRoleResource"
+                }
             }
         },
         "securitySchemes": {

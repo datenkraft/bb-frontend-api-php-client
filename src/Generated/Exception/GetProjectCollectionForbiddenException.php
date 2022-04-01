@@ -2,12 +2,12 @@
 
 namespace Datenkraft\Backbone\Client\FrontendApi\Generated\Exception;
 
-class PostAuthRoleIdentityCollectionNotFoundException extends NotFoundException
+class GetProjectCollectionForbiddenException extends ForbiddenException
 {
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Not Found', 404);
+        parent::__construct('Forbidden', 403);
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse()
