@@ -14,21 +14,27 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    protected $normalizers = array('Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\ErrorResponseNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\Error' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\ErrorNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ProjectResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\ProjectResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\DebtLineItemResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\DebtLineItemResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\PriceProperty' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\PricePropertyNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\AuthPermissionResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\AuthPermissionResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\AuthRoleIdentityResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\AuthRoleIdentityResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\AuthRoleResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\AuthRoleResourceNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null)
+    protected $normalizers = array('Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\ErrorResponseNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\Error' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\ErrorNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ProjectResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\ProjectResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\DebtLineItemResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\DebtLineItemResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\PriceProperty' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\PricePropertyNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\AuthPermissionResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\AuthPermissionResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\AuthRoleIdentityResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\AuthRoleIdentityResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\AuthRoleResource' => 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Normalizer\\AuthRoleResourceNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
+    public function supportsDenormalization($data, $type, $format = null) : bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null) : bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = array())
     {
         $normalizerClass = $this->normalizers[get_class($object)];
         $normalizer = $this->getNormalizer($normalizerClass);
         return $normalizer->normalize($object, $format, $context);
     }
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
         $denormalizerClass = $this->normalizers[$class];
