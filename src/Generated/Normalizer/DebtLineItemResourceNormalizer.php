@@ -75,6 +75,15 @@ class DebtLineItemResourceNormalizer implements DenormalizerInterface, Normalize
         elseif (\array_key_exists('invoiceNumber', $data) && $data['invoiceNumber'] === null) {
             $object->setInvoiceNumber(null);
         }
+        if (\array_key_exists('unit', $data) && $data['unit'] !== null) {
+            $object->setUnit($data['unit']);
+        }
+        elseif (\array_key_exists('unit', $data) && $data['unit'] === null) {
+            $object->setUnit(null);
+        }
+        if (\array_key_exists('pricePerUnit', $data)) {
+            $object->setPricePerUnit($this->denormalizer->denormalize($data['pricePerUnit'], 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\PriceProperty', 'json', $context));
+        }
         return $object;
     }
     /**
@@ -102,6 +111,12 @@ class DebtLineItemResourceNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getInvoiceNumber()) {
             $data['invoiceNumber'] = $object->getInvoiceNumber();
+        }
+        if (null !== $object->getUnit()) {
+            $data['unit'] = $object->getUnit();
+        }
+        if (null !== $object->getPricePerUnit()) {
+            $data['pricePerUnit'] = $this->normalizer->normalize($object->getPricePerUnit(), 'json', $context);
         }
         return $data;
     }

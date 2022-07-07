@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FrontendApi\Generated\Endpoint;
 
-class GetDebtLineItemCollection extends \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\Client\Endpoint
+class GetDebtLineItemCsv extends \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FrontendApi\Generated\Runtime\Client\Endpoint
 {
     /**
      * Query Debt Line Items by projectId and time range
@@ -24,7 +24,7 @@ class GetDebtLineItemCollection extends \Datenkraft\Backbone\Client\FrontendApi\
     }
     public function getUri() : string
     {
-        return '/debt-line-item';
+        return '/debt-line-item/csv';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -48,30 +48,29 @@ class GetDebtLineItemCollection extends \Datenkraft\Backbone\Client\FrontendApi\
     /**
      * {@inheritdoc}
      *
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\DebtLineItemResource[]|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse
+     * @return null|\Datenkraft\Backbone\Client\FrontendApi\Generated\Model\ErrorResponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\DebtLineItemResource[]', 'json');
+        if (200 === $status) {
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
+            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
+            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (403 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionForbiddenException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
+            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvForbiddenException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCollectionInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
+            throw new \Datenkraft\Backbone\Client\FrontendApi\Generated\Exception\GetDebtLineItemCsvInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\ErrorResponse', 'json');

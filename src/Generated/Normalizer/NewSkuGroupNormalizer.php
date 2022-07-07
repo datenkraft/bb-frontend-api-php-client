@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PricePropertyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NewSkuGroupNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\PriceProperty';
+        return $type === 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\NewSkuGroup';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\PriceProperty';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FrontendApi\\Generated\\Model\\NewSkuGroup';
     }
     /**
      * @return mixed
@@ -35,21 +35,12 @@ class PricePropertyNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FrontendApi\Generated\Model\PriceProperty();
+        $object = new \Datenkraft\Backbone\Client\FrontendApi\Generated\Model\NewSkuGroup();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('minorMicro', $data) && $data['minorMicro'] !== null) {
-            $object->setMinorMicro($data['minorMicro']);
-        }
-        elseif (\array_key_exists('minorMicro', $data) && $data['minorMicro'] === null) {
-            $object->setMinorMicro(null);
-        }
-        if (\array_key_exists('currency', $data) && $data['currency'] !== null) {
-            $object->setCurrency($data['currency']);
-        }
-        elseif (\array_key_exists('currency', $data) && $data['currency'] === null) {
-            $object->setCurrency(null);
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
         }
         return $object;
     }
@@ -59,12 +50,7 @@ class PricePropertyNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getMinorMicro()) {
-            $data['minorMicro'] = $object->getMinorMicro();
-        }
-        if (null !== $object->getCurrency()) {
-            $data['currency'] = $object->getCurrency();
-        }
+        $data['name'] = $object->getName();
         return $data;
     }
 }

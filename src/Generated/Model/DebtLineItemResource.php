@@ -5,37 +5,37 @@ namespace Datenkraft\Backbone\Client\FrontendApi\Generated\Model;
 class DebtLineItemResource
 {
     /**
-     * Debt Line Item ID
+     * debtLineItemId
      *
      * @var string
      */
     protected $debtLineItemId;
     /**
-     * SKU Code
+     * skuCode
      *
      * @var string
      */
     protected $skuCode;
     /**
-     * SKU Group Name
+     * skuGroupName
      *
      * @var string
      */
     protected $skuGroupName;
     /**
-     * Quantity
+     * quantity
      *
      * @var int|null
      */
     protected $quantity;
     /**
-     * Project Id
+     * projectId
      *
      * @var string
      */
     protected $projectId;
     /**
-     * Project Name
+     * projectName
      *
      * @var string
      */
@@ -53,19 +53,31 @@ class DebtLineItemResource
      */
     protected $usageEnd;
     /**
-     * Class DebtLineItemResource
+     * 
      *
      * @var PriceProperty
      */
     protected $priceTotal;
     /**
-     * Invoice number
+     * invoiceNumber
      *
      * @var string|null
      */
     protected $invoiceNumber;
     /**
-     * Debt Line Item ID
+     * Unit
+     *
+     * @var string|null
+     */
+    protected $unit;
+    /**
+     * 
+     *
+     * @var PriceProperty
+     */
+    protected $pricePerUnit;
+    /**
+     * debtLineItemId
      *
      * @return string
      */
@@ -74,7 +86,7 @@ class DebtLineItemResource
         return $this->debtLineItemId;
     }
     /**
-     * Debt Line Item ID
+     * debtLineItemId
      *
      * @param string $debtLineItemId
      *
@@ -86,7 +98,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * SKU Code
+     * skuCode
      *
      * @return string
      */
@@ -95,7 +107,7 @@ class DebtLineItemResource
         return $this->skuCode;
     }
     /**
-     * SKU Code
+     * skuCode
      *
      * @param string $skuCode
      *
@@ -107,7 +119,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * SKU Group Name
+     * skuGroupName
      *
      * @return string
      */
@@ -116,7 +128,7 @@ class DebtLineItemResource
         return $this->skuGroupName;
     }
     /**
-     * SKU Group Name
+     * skuGroupName
      *
      * @param string $skuGroupName
      *
@@ -128,7 +140,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * Quantity
+     * quantity
      *
      * @return int|null
      */
@@ -137,7 +149,7 @@ class DebtLineItemResource
         return $this->quantity;
     }
     /**
-     * Quantity
+     * quantity
      *
      * @param int|null $quantity
      *
@@ -149,7 +161,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * Project Id
+     * projectId
      *
      * @return string
      */
@@ -158,7 +170,7 @@ class DebtLineItemResource
         return $this->projectId;
     }
     /**
-     * Project Id
+     * projectId
      *
      * @param string $projectId
      *
@@ -170,7 +182,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * Project Name
+     * projectName
      *
      * @return string
      */
@@ -179,7 +191,7 @@ class DebtLineItemResource
         return $this->projectName;
     }
     /**
-     * Project Name
+     * projectName
      *
      * @param string $projectName
      *
@@ -233,7 +245,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * Class DebtLineItemResource
+     * 
      *
      * @return PriceProperty
      */
@@ -242,7 +254,7 @@ class DebtLineItemResource
         return $this->priceTotal;
     }
     /**
-     * Class DebtLineItemResource
+     * 
      *
      * @param PriceProperty $priceTotal
      *
@@ -254,7 +266,7 @@ class DebtLineItemResource
         return $this;
     }
     /**
-     * Invoice number
+     * invoiceNumber
      *
      * @return string|null
      */
@@ -263,7 +275,7 @@ class DebtLineItemResource
         return $this->invoiceNumber;
     }
     /**
-     * Invoice number
+     * invoiceNumber
      *
      * @param string|null $invoiceNumber
      *
@@ -272,6 +284,48 @@ class DebtLineItemResource
     public function setInvoiceNumber(?string $invoiceNumber) : self
     {
         $this->invoiceNumber = $invoiceNumber;
+        return $this;
+    }
+    /**
+     * Unit
+     *
+     * @return string|null
+     */
+    public function getUnit() : ?string
+    {
+        return $this->unit;
+    }
+    /**
+     * Unit
+     *
+     * @param string|null $unit
+     *
+     * @return self
+     */
+    public function setUnit(?string $unit) : self
+    {
+        $this->unit = $unit;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return PriceProperty
+     */
+    public function getPricePerUnit() : PriceProperty
+    {
+        return $this->pricePerUnit;
+    }
+    /**
+     * 
+     *
+     * @param PriceProperty $pricePerUnit
+     *
+     * @return self
+     */
+    public function setPricePerUnit(PriceProperty $pricePerUnit) : self
+    {
+        $this->pricePerUnit = $pricePerUnit;
         return $this;
     }
 }

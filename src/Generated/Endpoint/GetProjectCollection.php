@@ -52,6 +52,6 @@ class GetProjectCollection extends \Datenkraft\Backbone\Client\FrontendApi\Gener
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }
